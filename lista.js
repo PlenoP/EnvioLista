@@ -7,26 +7,29 @@ function DeleteItem(){
 function EditarEnvio(){
     criar_textbox.readOnly = false
 }
-function SalvarEnvio(){
-    criar_textbox.readOnly = true
-    console.log(criar_textbox.readOnly)
+function SalvarEnvio(){ 
+    const novo_valor_envio_lista = this.parentElement.firstChild 
+    const item_lista = this.parentElement 
+    item_lista.innerHTML = novo_valor_envio_lista.value 
+    item_lista.appendChild(BotaoDelete()) 
+    item_lista.appendChild(BotaoEdit()) 
 }
-function BotaoSalvar(){
+function BotaoSalvar(){ 
     const botao_salvar = document.createElement('button')
     botao_salvar.classList.add("btn", "btn-success")
     botao_salvar.type = "button"
     botao_salvar.innerHTML = "Salvar"
-    botao_salvar.addEventListener("click", SalvarEnvio() )
+    botao_salvar.addEventListener("click", SalvarEnvio )
     return botao_salvar
 }
 
-function BotaoEdit(){
-    const botao_edit = document.createElement('button')
-    botao_edit.classList.add("btn", "btn-warning")
-    botao_edit.type = "button"
-    botao_edit.innerHTML = "  Editar  "
-    botao_edit.addEventListener("click", EditarEnvio )
-    return botao_edit
+function BotaoEdit(){ 
+    const botao_editar = document.createElement('button')
+    botao_editar.classList.add("btn", "btn-primary")
+    botao_editar.type = "button"
+    botao_editar.innerHTML = "  Editar  "
+    botao_editar.addEventListener("click", EditarEnvio )   
+    return botao_editar
 }
 
 function BotaoDelete(){
@@ -34,7 +37,7 @@ function BotaoDelete(){
     botao_delete.classList.add("btn", "btn-danger")
     botao_delete.innerHTML = "Deletar"
     botao_delete.type = "button"
-    botao_delete.addEventListener("click", DeleteItem);
+    botao_delete.addEventListener("click", DeleteItem );
     return botao_delete
 }
 
